@@ -45,7 +45,6 @@
 
 ;; Dot thing
 (load-file "~/.emacs.d/plugins/graphviz-dot-mode.el")
-
 ;; Color theme
 (load-file "~/.emacs.d/plugins/color-theme.el")
 (require 'color-theme)

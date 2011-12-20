@@ -1,5 +1,5 @@
 ;; Get mail
-(setq user-mail-address "wenbin.org@gmail.com")
+(setq user-mail-address "wenbin@cs.wisc.edu")
 (setq user-full-name "Wenbin Fang")
 (load-library "smtpmail")
 (load-library "nnimap")
