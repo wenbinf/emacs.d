@@ -8,7 +8,6 @@
 (line-number-mode 1)
 (column-number-mode 1)
 (setq standard-indent 2)
-(global-hl-line-mode 1)
 (setq default-tab-width 2)
 
 ;; Place Backup Files in Specific Directory
@@ -20,7 +19,6 @@
 ;; GUI
 (mouse-wheel-mode t)
 (setq scroll-step 1)
-(tool-bar-mode 0)
 (menu-bar-mode 0)
 (auto-image-file-mode)
 
@@ -51,4 +49,15 @@
 ;; Color theme
 (load-file "~/.emacs.d/plugins/color-theme.el")
 (require 'color-theme)
-(color-theme-dark-laptop)
+;(color-theme-dark-laptop)
+(require 'highlight-current-line)
+(highlight-current-line-on t)
+(set-face-background 'highlight-current-line-face "blue")
+(if window-system (color-theme-dark-laptop))
+
+;; Org mode
+(require 'org)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+
+;; Gnus
+(load-file "~/.emacs.d/inc/gnus.el")
