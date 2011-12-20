@@ -1,2 +1,1 @@
-machine imap.gmail.com login wenbin.org@gmail.com 
-port 993
+machine imap.gmail.com login wenbin.org@gmail.com port 993
