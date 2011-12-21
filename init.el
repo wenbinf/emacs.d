@@ -17,7 +17,7 @@
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backup"))))
 
 ;; GUI
-(mouse-wheel-mode t)
+(if window-system (mouse-wheel-mode t))
 (setq scroll-step 1)
 (menu-bar-mode 0)
 (auto-image-file-mode)
