@@ -49,9 +49,9 @@
 (load-file "~/.emacs.d/plugins/color-theme.el")
 (require 'color-theme)
 ;(color-theme-dark-laptop)
-(require 'highlight-current-line)
-(highlight-current-line-on t)
-(set-face-background 'highlight-current-line-face "blue")
+;(require 'highlight-current-line)
+;(highlight-current-line-on t)
+;(set-face-background 'highlight-current-line-face "blue")
 (if window-system (color-theme-dark-laptop))
 
 ;; Org mode

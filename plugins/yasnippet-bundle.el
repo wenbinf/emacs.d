@@ -3956,7 +3956,9 @@ Use multiple times to bind different COMMANDs to the same KEY."
 		       ("class" "class ${1:Name}\n{\npublic:\n    ${1:$(yas/substr text \"[^: ]*\")}($2);\n    virtual ~${1:$(yas/substr text \"[^: ]*\")}();\n};" "class ... { ... }" nil nil nil nil nil)
 		       ("ns" "namespace " "namespace ..." nil nil nil nil nil)
 		       ("template" "template <typename ${T}>" "template <typename ...>" nil nil nil nil nil)
-		       ("using" "using namespace ${std};\n$0" "using namespace ... " nil nil nil nil nil))
+		       ("using" "using namespace ${std};\n$0" "using namespace ... " nil nil nil nil nil)
+		       ("bc" "// ----------------------------------------------------------------------------- \n//${1:\ }\n// -----------------------------------------------------------------------------" "// ----------------------------------------------------------------------------- \n//...\n// -----------------------------------------------------------------------------" nil nil nil nil nil)
+         )
 		     '(cc-mode))
 
 
