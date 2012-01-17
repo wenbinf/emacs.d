@@ -60,3 +60,5 @@
 
 ;; Gnus
 (load-file "~/.emacs.d/inc/gnus.el")
+
+(require 'xcscope)
