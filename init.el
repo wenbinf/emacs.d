@@ -25,11 +25,11 @@
 ;; Buffer
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
 (setq default-major-mode 'text-mode)
-(global-font-lock-mode t)
+;(global-font-lock-mode t)
 (setq inhibit-startup-message t)
 
 ;; Theme
-(add-to-list 'default-frame-alist '(font . "Mono-16"))
+(add-to-list 'default-frame-alist '(font . "Mono-14"))
 
 ;; Programming
 (show-paren-mode t)
@@ -59,6 +59,14 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
 ;; Gnus
-(load-file "~/.emacs.d/inc/gnus.el")
+;; (load-file "~/.emacs.d/plugins/gnus.el")
 
+;; cscope
 (require 'xcscope)
+
+;; google c style
+(load-file "~/.emacs.d/plugins/google-c-style.el")
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+(add-hook 'c++-mode-common-hook 'google-set-c-style)
+(add-hook 'c++-mode-common-hook 'google-make-newline-indent)
