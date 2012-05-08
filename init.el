@@ -70,3 +70,26 @@
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 (add-hook 'c++-mode-common-hook 'google-set-c-style)
 (add-hook 'c++-mode-common-hook 'google-make-newline-indent)
+
+;; beautify code
+(defun clean-code ()
+	(interactive)
+;	(mark-whole-buffer)
+;	(align-entire 'beginning-of-buffer 'end-of-buffer)
+;	(delete-trailing-whitespace)
+;	(mark-whole-buffer)
+;	(untabify)
+)
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(graphviz-dot-preview-extension "svg")
+ '(graphviz-dot-view-command "doted %s"))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
