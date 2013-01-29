@@ -7,8 +7,8 @@
 (setq auto-fill-mode 1)
 (line-number-mode 1)
 (column-number-mode 1)
-(setq standard-indent 2)
-(setq default-tab-width 2)
+(setq standard-indent 4)
+(setq default-tab-width 4)
 
 ;; Place Backup Files in Specific Directory
 (setq make-backup-files t)
@@ -19,7 +19,7 @@
 ;; GUI
 (if window-system (mouse-wheel-mode t))
 (setq scroll-step 1)
-(menu-bar-mode 0)
+(if window-system (menu-bar-mode 1) (menu-bar-mode 0))
 (auto-image-file-mode)
 
 ;; Buffer
@@ -57,6 +57,14 @@
 ;; Org mode
 (require 'org)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(unless (boundp 'org-export-latex-classes)
+  (setq org-export-latex-classes nil))
+(add-to-list 'org-export-latex-classes
+             '("res"
+               "\\documentclass{res}"
+               ("\\subfsection{%s}" . "\\subsection{%s}")
+			   ("\\subsubsection{%s}" . "\\subsubsection{%s}")))  
+(setq org-export-html-postamble nil)
 
 ;; Gnus
 ;; (load-file "~/.emacs.d/plugins/gnus.el")
