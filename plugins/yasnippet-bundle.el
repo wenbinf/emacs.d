@@ -3941,10 +3941,10 @@ Use multiple times to bind different COMMANDs to the same KEY."
 (yas/define-snippets 'cc-mode
 		     '(("do" "do\n{\n    $0\n} while (${1:condition});" "do { ... } while (...)" nil nil nil nil nil)
 		       ("for" "for (${1:int i = 0}; ${2:i < N}; ${3:++i})\n{\n    $0\n}" "for (...; ...; ...) { ... }" nil nil nil nil nil)
-		       ("if" "if (${1:condition}) {\n  \n}" "if (...) { ... }" nil nil nil nil nil)
+		       ("if" "if (${1:condition})\n{\n    $0\n}" "if (...) { ... }" nil nil nil nil nil)
 		       ("inc" "#include \"$1\"\n" "#include \"...\"" nil nil nil nil nil)
 		       ("inc" "#include <$1>\n" "#include <...>" nil nil nil nil nil)
-		       ("main" "int main(int argc, char *argv[]) {\n    $0\n    return 0;\n}\n" "int main(argc, argv) { ... }" nil nil nil nil nil)
+		       ("main" "int main(int argc, char *argv[])\n{\n    $0\n    return 0;\n}\n" "int main(argc, argv) { ... }" nil nil nil nil nil)
 		       ("once" "#ifndef ${1:_`(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`_H_}\n#define $1\n\n$0\n\n#endif /* $1 */" "#ifndef XXX; #define XXX; #endif" nil nil nil nil nil)
 		       ("struct" "struct ${1:name}\n{\n    $0\n};" "struct ... { ... }" nil nil nil nil nil))
 		     '(text-mode))
@@ -3956,9 +3956,7 @@ Use multiple times to bind different COMMANDs to the same KEY."
 		       ("class" "class ${1:Name}\n{\npublic:\n    ${1:$(yas/substr text \"[^: ]*\")}($2);\n    virtual ~${1:$(yas/substr text \"[^: ]*\")}();\n};" "class ... { ... }" nil nil nil nil nil)
 		       ("ns" "namespace " "namespace ..." nil nil nil nil nil)
 		       ("template" "template <typename ${T}>" "template <typename ...>" nil nil nil nil nil)
-		       ("using" "using namespace ${std};\n$0" "using namespace ... " nil nil nil nil nil)
-		       ("bc" "// ------------------------------------------------------------------- \n//${1:\ }\n// -------------------------------------------------------------------" "// ------------------------------------------------------------------- \n//...\n// -------------------------------------------------------------------" nil nil nil nil nil)
-         )
+		       ("using" "using namespace ${std};\n$0" "using namespace ... " nil nil nil nil nil))
 		     '(cc-mode))
 
 

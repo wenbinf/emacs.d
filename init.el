@@ -2,13 +2,14 @@
 ;;                        Basic environment
 ;; =====================================================================
 
-;; Lines and Columns
+;; Formatting
 (setq-default fill-column 80)
 (setq auto-fill-mode 1)
 (line-number-mode 1)
 (column-number-mode 1)
 (setq standard-indent 4)
 (setq default-tab-width 4)
+(setq-default indent-tabs-mode nil)
 
 ;; Place Backup Files in Specific Directory
 (setq make-backup-files t)
@@ -79,15 +80,6 @@
 (add-hook 'c++-mode-common-hook 'google-set-c-style)
 (add-hook 'c++-mode-common-hook 'google-make-newline-indent)
 
-;; beautify code
-(defun clean-code ()
-	(interactive)
-;	(mark-whole-buffer)
-;	(align-entire 'beginning-of-buffer 'end-of-buffer)
-;	(delete-trailing-whitespace)
-;	(mark-whole-buffer)
-;	(untabify)
-)
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
