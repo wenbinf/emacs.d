@@ -42,17 +42,12 @@
 (add-to-list 'load-path "~/.emacs.d/plugins")
 
 ;; Auto completion for coding
-(require 'yasnippet-bundle)
+(require 'yasnippet)
+(yas-global-mode 1)
 
-;; Dot thing
-(load-file "~/.emacs.d/plugins/graphviz-dot-mode.el")
 ;; Color theme
 (load-file "~/.emacs.d/plugins/color-theme.el")
 (require 'color-theme)
-;(color-theme-dark-laptop)
-;(require 'highlight-current-line)
-;(highlight-current-line-on t)
-;(set-face-background 'highlight-current-line-face "blue")
 (if window-system (color-theme-dark-laptop))
 
 ;; Org mode
@@ -67,34 +62,10 @@
 			   ("\\subsubsection{%s}" . "\\subsubsection{%s}")))  
 (setq org-export-html-postamble nil)
 
-;; Gnus
-;; (load-file "~/.emacs.d/plugins/gnus.el")
-
 ;; cscope
 (require 'xcscope)
 
-;; google c style
-(load-file "~/.emacs.d/plugins/google-c-style.el")
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
-(add-hook 'c++-mode-common-hook 'google-set-c-style)
-(add-hook 'c++-mode-common-hook 'google-make-newline-indent)
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(graphviz-dot-preview-extension "svg")
- '(graphviz-dot-view-command "doted %s"))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
-
-; Auto completion
+;; Auto completion
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/ac-dict")
 (ac-config-default)
@@ -104,8 +75,36 @@
 (setq ac-auto-start 2)
 (setq ac-ignore-case nil)
 
-(require 'js2-mode)
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
+;; Enforce formating code at edit-time
 (load "editorconfig")
+
+;; Code folding
+(add-hook 'js-mode-hook
+          (lambda ()
+            ;; Scan the file for nested code blocks
+            (imenu-add-menubar-index)
+            ;; Activate the folding mode
+            (hs-minor-mode t)))
+; c-c @ c-h to hide
+; c-c @ c-s to show
+(global-set-key (kbd "") 'hs-show-block)
+(global-set-key (kbd "") 'hs-show-all)
+(global-set-key (kbd "") 'hs-hide-block)
+(global-set-key (kbd "") 'hs-hide-all)
+
+;; m-x run-js
+(require 'js-comint)
+(setq inferior-js-program-command "node")
+(setq inferior-js-mode-hook
+      (lambda ()
+        (ansi-color-for-comint-mode-on)
+        (add-to-list 'comint-preoutput-filter-functions
+                     (lambda (output)
+                       (replace-regexp-in-string ".*1G\.\.\..*5G" "..."
+                                                 (replace-regexp-in-string ".*1G.*3G" "&gt;" output))
+                       ))))
+
+;; Check syntax on the fly
+(require 'flymake-jslint) ;; Not necessary if using ELPA package
+(add-hook 'js-mode-hook 'flymake-jslint-load)
+(require 'flymake-cursor)
