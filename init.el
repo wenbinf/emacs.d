@@ -1,3 +1,4 @@
+
 ;; =====================================================================
 ;;                        Basic environment
 ;; =====================================================================
@@ -39,6 +40,10 @@
 ;; =====================================================================
 ;;                          Plugin
 ;; =====================================================================
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 (add-to-list 'load-path "~/.emacs.d/plugins")
 
 ;; Auto completion for coding
@@ -103,8 +108,11 @@
                        (replace-regexp-in-string ".*1G\.\.\..*5G" "..."
                                                  (replace-regexp-in-string ".*1G.*3G" "&gt;" output))
                        ))))
+(require 'js2-mode)
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
-;; Check syntax on the fly
-(require 'flymake-jslint) ;; Not necessary if using ELPA package
-(add-hook 'js-mode-hook 'flymake-jslint-load)
-(require 'flymake-cursor)
+
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
