@@ -53,6 +53,7 @@
 ;; Color theme
 (load-file "~/.emacs.d/plugins/color-theme.el")
 (require 'color-theme)
+(color-theme-tty-dark)
 (if window-system (color-theme-dark-laptop))
 
 ;; Org mode
