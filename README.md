@@ -3,4 +3,4 @@ emacs.d
 
 My .emacs.d.
 
-Mainly foucsed on Javascript DEV.
+Works well with Emacs 24.
